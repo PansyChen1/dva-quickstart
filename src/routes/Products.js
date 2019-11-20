@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { connect } from "dva";
 import ProductList from '../components/ProductList';
-import {Button, Icon, Modal, Input} from "antd";
+import {Button, Icon, Modal, Input, Form} from "antd";
 
-const Products = ({ dispatch, products }) => {
+const Products =  ({ dispatch, products}) => {
 
   const [visible, setVisible] = useState(false);
+
 
   function handleCancel() {
     setVisible(!visible);
@@ -19,6 +20,7 @@ const Products = ({ dispatch, products }) => {
   }
 
   const AddProducts = ({visible}) => {
+
     return (
       <Modal
         title={'Add a new products'}
@@ -26,7 +28,8 @@ const Products = ({ dispatch, products }) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <span>Product Name : </span><Input style={{width: 350, marginLeft: 10}} placeholder={"Please input the Product Name"}/>
+        <span>Product Name : </span>
+
       </Modal>
     )
   };
@@ -47,6 +50,7 @@ const Products = ({ dispatch, products }) => {
     </div>
   );
 };
+
 export default connect(({ products }) => ({
   products,
 }))(Products);
